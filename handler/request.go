@@ -58,3 +58,16 @@ func (r *CreateUserRequest) Validate() error {
 	}
 	return nil
 }
+
+type UpdateUserRequest struct {
+	Name     string `json:"name"`
+	Email    string `json:"email"`
+	Password string `json:"password"`
+}
+
+func (r *UpdateUserRequest) Validate() error {
+	if r.Name != "" && r.Email != "" && r.Password != "" {
+		return nil
+	}
+	return fmt.Errorf("at least one valid field request must be provided")
+}
