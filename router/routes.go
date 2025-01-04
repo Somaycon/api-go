@@ -17,7 +17,7 @@ func initializeRoutes(router *gin.Engine) {
 		v1.GET("/tasks", handler.ShowAllTasksHandler)
 
 		// User
-		v1.GET("/user")
+		v1.GET("/user", handler.ShowUserHandler)
 		v1.GET("/users", handler.ShowAllUsers)
 		v1.POST("user", handler.CreateUserHandler)
 		v1.PUT("/user")
