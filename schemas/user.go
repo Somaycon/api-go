@@ -10,7 +10,6 @@ type User struct {
 	gorm.Model
 	Name     string
 	Email    string
-	DataNasc string
 	Password string
 	Task     []Task
 }
@@ -22,7 +21,6 @@ type UserResponse struct {
 	DeletedAt time.Time `json:"deletedAt,omitempty"`
 	Name      string    `json:"name"`
 	Email     string    `json:"email"`
-	DataNasc  string    `json:"dataNasc"`
 	Password  string    `json:"password"`
 	Task      []Task    `json:"task" gorm:"foreignKey:UserId"`
 }
