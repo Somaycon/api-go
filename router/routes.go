@@ -19,7 +19,7 @@ func initializeRoutes(router *gin.Engine) {
 		// User
 		v1.GET("/user")
 		v1.GET("/users")
-		v1.POST("user")
+		v1.POST("user", handler.CreateUserHandler)
 		v1.PUT("/user")
 		v1.DELETE("/user")
 	}
