@@ -7,8 +7,7 @@ This repository contains a simple API built with Go, developed for study purpose
 - Go (Golang)
 - [Gin](https://github.com/gin-gonic/gin) (HTTP Framework)
 - [Gorm](https://gorm.io/) (ORM for Go)
-- Database (optional, depending on the implementation)
+- [SQLite]
 ### Prerequisites
 
 - Go 1.23
-- (Optional) Database
