@@ -24,3 +24,8 @@ type UserResponse struct {
 	Password  string    `json:"password"`
 	Task      []Task    `json:"task" gorm:"foreignKey:UserId"`
 }
+
+type LoginUserResponse struct {
+	Menssage string `json:"menssage"`
+	UserId   uint   `json:"user_id,omitempty "`
+}
