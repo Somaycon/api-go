@@ -59,6 +59,24 @@ func (r *CreateUserRequest) Validate() error {
 	return nil
 }
 
+type LoginUserRequest struct {
+	Email    string `json:"email"`
+	Password string `json:"password"`
+}
+
+func (r *LoginUserRequest) Validate() error {
+	if r.Email == "" && r.Password == "" {
+		return fmt.Errorf("Body is empty")
+	}
+	if r.Email == "" {
+		return errParamIsRequired("name", "string")
+	}
+	if r.Password == "" {
+		return errParamIsRequired("password", "string")
+	}
+	return nil
+}
+
 type UpdateUserRequest struct {
 	Name     string `json:"name"`
 	Email    string `json:"email"`
