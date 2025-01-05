@@ -18,7 +18,7 @@ func LoginUserHandler(ctx *gin.Context) {
 		return
 	}
 
-	// Find User by Email
+	// Find User
 	user := schemas.User{}
 	if err := db.Where("email=? AND password=?", request.Email, request.Password).First(&user).Error; err != nil {
 		if err == gorm.ErrRecordNotFound {
