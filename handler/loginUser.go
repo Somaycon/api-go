@@ -30,9 +30,15 @@ func LoginUserHandler(ctx *gin.Context) {
 		}
 		return
 	}
+
+	token, err := GenerateToken(user.ID)
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, "Error generating token")
+	}
 	SendSucess(ctx, "login-user", schemas.LoginUserResponse{
 		Menssage: "Welcome back",
 		UserId:   user.ID,
+		Token:    token,
 	})
 
 }
