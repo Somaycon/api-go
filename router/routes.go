@@ -2,6 +2,7 @@ package router
 
 import (
 	"github.com/Somaycon/api-go/handler"
+	"github.com/Somaycon/api-go/middleware"
 	"github.com/gin-gonic/gin"
 )
 
@@ -9,21 +10,22 @@ func initializeRoutes(router *gin.Engine) {
 	handler.InitializeHandler()
 	v1 := router.Group("/api/")
 	{
+		//Login and Register
+		v1.POST("/login", handler.LoginUserHandler)
+		v1.POST("/register", handler.CreateUserHandler)
+
 		// Task
-		v1.GET("/task", handler.ShowTaskHandler)
-		v1.POST("/task", handler.CreateTaskHandler)
-		v1.DELETE("/task", handler.DeleteTaskHandler)
-		v1.PUT("/task", handler.UpdateTaskHandler)
-		v1.GET("/tasks", handler.ShowAllTasksHandler)
+		v1.GET("/task", middleware.AuthMiddleware(), handler.ShowTaskHandler)
+		v1.POST("/task", middleware.AuthMiddleware(), handler.CreateTaskHandler)
+		v1.DELETE("/task", middleware.AuthMiddleware(), handler.DeleteTaskHandler)
+		v1.PUT("/task", middleware.AuthMiddleware(), handler.UpdateTaskHandler)
+		v1.GET("/tasks", middleware.AuthMiddleware(), handler.ShowAllTasksHandler)
 
 		// User
-		v1.GET("/user", handler.ShowUserHandler)
-		v1.GET("/users", handler.ShowAllUsers)
-		v1.POST("/user", handler.CreateUserHandler)
-		v1.PUT("/user", handler.UpdateUserHandler)
-		v1.DELETE("/user", handler.DeleteUserHandler)
+		v1.GET("/users", middleware.AuthMiddleware(), handler.ShowAllUsers)
+		v1.GET("/user", middleware.AuthMiddleware(), handler.ShowUserHandler)
+		v1.PUT("/user", middleware.AuthMiddleware(), handler.UpdateUserHandler)
+		v1.DELETE("/user", middleware.AuthMiddleware(), handler.DeleteUserHandler)
 
-		//Login
-		v1.POST("/login", handler.LoginUserHandler)
 	}
 }
