@@ -20,6 +20,7 @@ func initializeRoutes(router *gin.Engine) {
 		v1.DELETE("/task", middleware.AuthMiddleware(), handler.DeleteTaskHandler)
 		v1.PUT("/task", middleware.AuthMiddleware(), handler.UpdateTaskHandler)
 		v1.GET("/tasks", middleware.AuthMiddleware(), handler.ShowAllTasksHandler)
+		v1.GET("/user-tasks", middleware.AuthMiddleware(), handler.ShowUserTasksHandler)
 
 		// User
 		v1.GET("/users", middleware.AuthMiddleware(), handler.ShowAllUsers)
