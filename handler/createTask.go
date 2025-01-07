@@ -11,6 +11,16 @@ func CreateTaskHandler(ctx *gin.Context) {
 	request := CreateTaskRequest{}
 
 	ctx.BindJSON(&request)
+	userId, exists := ctx.Get("userId")
+	if !exists {
+		ctx.JSON(http.StatusUnauthorized, gin.H{"error": "User Unauthorized"})
+		return
+	}
+	userIdUint, ok := userId.(uint)
+	if !ok {
+		ctx.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid user Id format"})
+		return
+	}
 
 	if err := request.Validate(); err != nil {
 		logger.Errof("validation error: %v", err.Error())
@@ -20,6 +30,7 @@ func CreateTaskHandler(ctx *gin.Context) {
 	task := schemas.Task{
 		Name:        request.Name,
 		Description: request.Description,
+		UserId:      userIdUint,
 	}
 
 	if err := db.Create(&task).Error; err != nil {
