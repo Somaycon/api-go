@@ -7,7 +7,7 @@ import (
 )
 
 type Task struct {
-	gorm.Model
+	gorm.Model  `swaggerignore:"true"`
 	Name        string
 	Description string
 	UserId      uint

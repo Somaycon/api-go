@@ -7,11 +7,11 @@ import (
 )
 
 type User struct {
-	gorm.Model
-	Name     string
-	Email    string
-	Password string
-	Task     []Task
+	gorm.Model `swaggerignore:"true"`
+	Name       string
+	Email      string
+	Password   string
+	Task       []Task
 }
 
 type UserResponse struct {
