@@ -1,14 +1,19 @@
 package router
 
 import (
+	docs "github.com/Somaycon/api-go/docs"
 	"github.com/Somaycon/api-go/handler"
 	"github.com/Somaycon/api-go/middleware"
 	"github.com/gin-gonic/gin"
+	swaggerfiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 func initializeRoutes(router *gin.Engine) {
 	handler.InitializeHandler()
-	v1 := router.Group("/api/")
+	basePath := "/api/"
+	docs.SwaggerInfo.BasePath = basePath
+	v1 := router.Group(basePath)
 	{
 		//Login and Register
 		v1.POST("/login", handler.LoginUserHandler)
@@ -29,4 +34,5 @@ func initializeRoutes(router *gin.Engine) {
 		v1.DELETE("/user", middleware.AuthMiddleware(), handler.DeleteUserHandler)
 
 	}
+	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 }
