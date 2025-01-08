@@ -61,3 +61,7 @@ type DeleteUserResponse struct {
 	Message string               `json:"message"`
 	Data    schemas.UserResponse `json:"data"`
 }
+type ShowAllUsersResponse struct {
+	Message string                 `json:"message"`
+	Data    []schemas.UserResponse `json:"data"`
+}

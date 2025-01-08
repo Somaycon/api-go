@@ -73,6 +73,15 @@ definitions:
       message:
         type: string
     type: object
+  handler.ShowAllUsersResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/schemas.UserResponse'
+        type: array
+      message:
+        type: string
+    type: object
   handler.ShowTaskResponse:
     properties:
       data:
@@ -404,6 +413,30 @@ paths:
           schema:
             $ref: '#/definitions/handler.ErrorResponse'
       summary: Delete user
+      tags:
+      - User
+  /users:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: User token
+        in: query
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.ShowAllUsersResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      summary: List users
       tags:
       - User
 swagger: "2.0"
