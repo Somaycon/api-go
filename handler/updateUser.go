@@ -7,6 +7,19 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// @BasePath /api/
+
+// @Summary Update user
+// @Descripition Update a user
+// @Tags User
+// @Accept json
+// @Produce json
+// @Param	token query string true "User token"
+// @Success 200 {object} UpdateUserResponse
+// @Failure 400 {object} ErrorResponse
+// @Failure 404 {object} ErrorResponse
+// @Failure 500 {object} ErrorResponse
+// @Router /user [put]
 func UpdateUserHandler(ctx *gin.Context) {
 	request := UpdateUserRequest{}
 	ctx.BindJSON(&request)

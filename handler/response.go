@@ -69,3 +69,7 @@ type ShowUserResponse struct {
 	Message string               `json:"message"`
 	Data    schemas.UserResponse `json:"data"`
 }
+type UpdateUserResponse struct {
+	Message string               `json:"message"`
+	Data    schemas.UserResponse `json:"data"`
+}

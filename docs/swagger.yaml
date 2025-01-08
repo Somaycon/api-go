@@ -103,6 +103,13 @@ definitions:
       message:
         type: string
     type: object
+  handler.UpdateUserResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.UserResponse'
+      message:
+        type: string
+    type: object
   schemas.Task:
     properties:
       description:
@@ -447,6 +454,37 @@ paths:
           schema:
             $ref: '#/definitions/handler.ErrorResponse'
       summary: Get user
+      tags:
+      - User
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: User token
+        in: query
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.UpdateUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      summary: Update user
       tags:
       - User
   /users:
