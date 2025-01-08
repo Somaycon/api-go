@@ -41,3 +41,7 @@ type ShowTaskResponse struct {
 	Message string               `json:"message"`
 	Data    schemas.TaskResponse `json:"data"`
 }
+type ShowAllTasksResponse struct {
+	Message string                 `json:"message"`
+	Data    []schemas.TaskResponse `json:"data"`
+}

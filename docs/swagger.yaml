@@ -27,6 +27,15 @@ definitions:
       message:
         type: string
     type: object
+  handler.ShowAllTasksResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/schemas.TaskResponse'
+        type: array
+      message:
+        type: string
+    type: object
   handler.ShowTaskResponse:
     properties:
       data:
@@ -147,6 +156,24 @@ paths:
           schema:
             $ref: '#/definitions/handler.ErrorResponse'
       summary: Create task
+      tags:
+      - Tasks
+  /tasks:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.ShowAllTasksResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      summary: List task
       tags:
       - Tasks
 swagger: "2.0"
