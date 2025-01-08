@@ -8,6 +8,19 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// @BasePath /api/
+
+// @Summary Delete task
+// @Descripition Delete a task
+// @Tags Tasks
+// @Accept json
+// @Produce json
+// @Param	id query string true "Task identification"
+// @Sucess 200 {object} CreateTaskResponse
+// @Failure 400 {object} ErrorResponse
+// @Failure 404 {object} ErrorResponse
+// @Failure 500 {object} ErrorResponse
+// @Router /task [delete]
 func DeleteTaskHandler(ctx *gin.Context) {
 	id := ctx.Query("id")
 	if id == "" {

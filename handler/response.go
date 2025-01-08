@@ -33,3 +33,7 @@ type CreateTaskResponse struct {
 	Message string               `json:"message"`
 	Data    schemas.TaskResponse `json:"data"`
 }
+type DeleteTaskResponse struct {
+	Message string               `json:"message"`
+	Data    schemas.TaskResponse `json:"data"`
+}
