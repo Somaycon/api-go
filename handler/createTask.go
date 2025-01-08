@@ -7,6 +7,19 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// @BasePath /api/
+
+// @Summary Create task
+// @Descripition Create a new task
+// @Tags Tasks
+// @Accept json
+// @Produce json
+// @Param	request body CreateTaskRequest true "Request body"
+// @Sucess 200 {object} CreateTaskResponse
+// @Failure 400 {object} ErrorResponse
+// @Failure 401 {object} ErrorResponse
+// @Failure 500 {object} ErrorResponse
+// @Router /task [post]
 func CreateTaskHandler(ctx *gin.Context) {
 	request := CreateTaskRequest{}
 
