@@ -89,6 +89,13 @@ definitions:
       message:
         type: string
     type: object
+  handler.ShowUserResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.UserResponse'
+      message:
+        type: string
+    type: object
   handler.UpdateTaskResponse:
     properties:
       data:
@@ -413,6 +420,33 @@ paths:
           schema:
             $ref: '#/definitions/handler.ErrorResponse'
       summary: Delete user
+      tags:
+      - User
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: User token
+        in: query
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.ShowUserResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      summary: Get user
       tags:
       - User
   /users:

@@ -65,3 +65,7 @@ type ShowAllUsersResponse struct {
 	Message string                 `json:"message"`
 	Data    []schemas.UserResponse `json:"data"`
 }
+type ShowUserResponse struct {
+	Message string               `json:"message"`
+	Data    schemas.UserResponse `json:"data"`
+}

@@ -7,6 +7,18 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// @BasePath /api/
+
+// @Summary Get user
+// @Descripition Get a user
+// @Tags User
+// @Accept json
+// @Produce json
+// @Param	token query string true "User token"
+// @Success 200 {object} ShowUserResponse
+// @Failure 401 {object} ErrorResponse
+// @Failure 404 {object} ErrorResponse
+// @Router /user [get]
 func ShowUserHandler(ctx *gin.Context) {
 	userId, exists := ctx.Get("userId")
 	if !exists {
