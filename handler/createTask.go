@@ -15,6 +15,7 @@ import (
 // @Accept json
 // @Produce json
 // @Param	request body CreateTaskRequest true "Request body"
+// @Param	token query string true "User token"
 // @Success 200 {object} CreateTaskResponse
 // @Failure 400 {object} ErrorResponse
 // @Failure 401 {object} ErrorResponse

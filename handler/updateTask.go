@@ -15,6 +15,7 @@ import (
 // @Accept json
 // @Produce json
 // @Param	id query string true "Task identification"
+// @Param	token query string true "User token"
 // @Success 200 {object} UpdateTaskResponse
 // @Failure 400 {object} ErrorResponse
 // @Failure 404 {object} ErrorResponse

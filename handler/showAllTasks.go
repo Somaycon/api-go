@@ -14,6 +14,7 @@ import (
 // @Tags Tasks
 // @Accept json
 // @Produce json
+// @Param	token query string true "User token"
 // @Success 200 {object} ShowAllTasksResponse
 // @Failure 500 {object} ErrorResponse
 // @Router /tasks [get]
