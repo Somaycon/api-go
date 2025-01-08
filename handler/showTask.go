@@ -8,6 +8,19 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// @BasePath /api/
+
+// @Summary Get task
+// @Descripition Get a task
+// @Tags Tasks
+// @Accept json
+// @Produce json
+// @Param	id query string true "Task identification"
+// @Success 200 {object} ShowTaskResponse
+// @Failure 400 {object} ErrorResponse
+// @Failure 404 {object} ErrorResponse
+// @Failure 500 {object} ErrorResponse
+// @Router /task [get]
 func ShowTaskHandler(ctx *gin.Context) {
 	id := ctx.Query("id")
 	if id == "" {

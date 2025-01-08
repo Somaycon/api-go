@@ -37,3 +37,7 @@ type DeleteTaskResponse struct {
 	Message string               `json:"message"`
 	Data    schemas.TaskResponse `json:"data"`
 }
+type ShowTaskResponse struct {
+	Message string               `json:"message"`
+	Data    schemas.TaskResponse `json:"data"`
+}

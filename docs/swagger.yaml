@@ -6,12 +6,50 @@ definitions:
       name:
         type: string
     type: object
+  handler.CreateTaskResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.TaskResponse'
+      message:
+        type: string
+    type: object
+  handler.DeleteTaskResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.TaskResponse'
+      message:
+        type: string
+    type: object
   handler.ErrorResponse:
     properties:
       errorCode:
         type: string
       message:
         type: string
+    type: object
+  handler.ShowTaskResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.TaskResponse'
+      message:
+        type: string
+    type: object
+  schemas.TaskResponse:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updatedAt:
+        type: string
+      user_id:
+        type: integer
     type: object
 info:
   contact: {}
@@ -29,6 +67,10 @@ paths:
       produces:
       - application/json
       responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.DeleteTaskResponse'
         "400":
           description: Bad Request
           schema:
@@ -44,6 +86,37 @@ paths:
       summary: Delete task
       tags:
       - Tasks
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Task identification
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.ShowTaskResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      summary: Get task
+      tags:
+      - Tasks
     post:
       consumes:
       - application/json
@@ -57,6 +130,10 @@ paths:
       produces:
       - application/json
       responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.CreateTaskResponse'
         "400":
           description: Bad Request
           schema:
