@@ -8,6 +8,20 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// @BasePath /api/
+
+// @Summary Delete user
+// @Descripition Delete a user
+// @Tags User
+// @Accept json
+// @Produce json
+// @Param	id query string true "User identification"
+// @Param	token query string true "User token"
+// @Success 200 {object} DeleteUserResponse
+// @Failure 400 {object} ErrorResponse
+// @Failure 404 {object} ErrorResponse
+// @Failure 500 {object} ErrorResponse
+// @Router /user [delete]
 func DeleteUserHandler(ctx *gin.Context) {
 	id := ctx.Query("id")
 	if id == "" {

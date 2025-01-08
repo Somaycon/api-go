@@ -57,3 +57,7 @@ type LoginUserResponse struct {
 	Message string               `json:"message"`
 	Data    schemas.UserResponse `json:"data"`
 }
+type DeleteUserResponse struct {
+	Message string               `json:"message"`
+	Data    schemas.UserResponse `json:"data"`
+}
