@@ -7,6 +7,19 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// @BasePath /api/
+
+// @Summary Update task
+// @Descripition Update a task
+// @Tags Tasks
+// @Accept json
+// @Produce json
+// @Param	id query string true "Task identification"
+// @Success 200 {object} UpdateTaskResponse
+// @Failure 400 {object} ErrorResponse
+// @Failure 404 {object} ErrorResponse
+// @Failure 500 {object} ErrorResponse
+// @Router /task [put]
 func UpdateTaskHandler(ctx *gin.Context) {
 	request := UpdateTaskRequest{}
 	ctx.BindJSON(&request)

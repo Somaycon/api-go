@@ -43,6 +43,13 @@ definitions:
       message:
         type: string
     type: object
+  handler.UpdateTaskResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.TaskResponse'
+      message:
+        type: string
+    type: object
   schemas.TaskResponse:
     properties:
       createdAt:
@@ -156,6 +163,37 @@ paths:
           schema:
             $ref: '#/definitions/handler.ErrorResponse'
       summary: Create task
+      tags:
+      - Tasks
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Task identification
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.UpdateTaskResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      summary: Update task
       tags:
       - Tasks
   /tasks:
