@@ -7,6 +7,18 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// @BasePath /api/
+
+// @Summary Create user
+// @Descripition Create a new user
+// @Tags User
+// @Accept json
+// @Produce json
+// @Param	request body CreateUserRequest true "Request body"
+// @Success 200 {object} CreateUserResponse
+// @Failure 400 {object} ErrorResponse
+// @Failure 500 {object} ErrorResponse
+// @Router /register [post]
 func CreateUserHandler(ctx *gin.Context) {
 	request := CreateUserRequest{}
 

@@ -49,3 +49,7 @@ type UpdateTaskResponse struct {
 	Message string               `json:"message"`
 	Data    schemas.TaskResponse `json:"data"`
 }
+type CreateUserResponse struct {
+	Message string               `json:"message"`
+	Data    schemas.UserResponse `json:"data"`
+}

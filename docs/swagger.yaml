@@ -13,6 +13,22 @@ definitions:
       message:
         type: string
     type: object
+  handler.CreateUserRequest:
+    properties:
+      email:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+    type: object
+  handler.CreateUserResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.UserResponse'
+      message:
+        type: string
+    type: object
   handler.DeleteTaskResponse:
     properties:
       data:
@@ -50,6 +66,15 @@ definitions:
       message:
         type: string
     type: object
+  schemas.Task:
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+      userId:
+        type: integer
+    type: object
   schemas.TaskResponse:
     properties:
       createdAt:
@@ -67,9 +92,59 @@ definitions:
       user_id:
         type: integer
     type: object
+  schemas.UserResponse:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      password:
+        type: string
+      task:
+        items:
+          $ref: '#/definitions/schemas.Task'
+        type: array
+      updatedAt:
+        type: string
+    type: object
 info:
   contact: {}
 paths:
+  /register:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/handler.CreateUserRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.CreateUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      summary: Create user
+      tags:
+      - User
   /task:
     delete:
       consumes:
