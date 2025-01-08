@@ -53,3 +53,7 @@ type CreateUserResponse struct {
 	Message string               `json:"message"`
 	Data    schemas.UserResponse `json:"data"`
 }
+type LoginUserResponse struct {
+	Message string               `json:"message"`
+	Data    schemas.UserResponse `json:"data"`
+}

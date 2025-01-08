@@ -8,6 +8,19 @@ import (
 	"gorm.io/gorm"
 )
 
+// @BasePath /api/
+
+// @Summary Login user
+// @Descripition Login user
+// @Tags Auth
+// @Accept json
+// @Produce json
+// @Param	request body LoginUserRequest true "Request body"
+// @Success 200 {object} LoginUserResponse
+// @Failure 400 {object} ErrorResponse
+// @Failure 401 {object} ErrorResponse
+// @Failure 500 {object} ErrorResponse
+// @Router /login [post]
 func LoginUserHandler(ctx *gin.Context) {
 	request := LoginUserRequest{}
 	ctx.BindJSON(&request)
