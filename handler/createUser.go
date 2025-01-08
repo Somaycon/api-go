@@ -11,7 +11,7 @@ import (
 
 // @Summary Create user
 // @Descripition Create a new user
-// @Tags User
+// @Tags Auth
 // @Accept json
 // @Produce json
 // @Param	request body CreateUserRequest true "Request body"

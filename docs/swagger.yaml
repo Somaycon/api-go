@@ -144,7 +144,7 @@ paths:
             $ref: '#/definitions/handler.ErrorResponse'
       summary: Create user
       tags:
-      - User
+      - Auth
   /task:
     delete:
       consumes:
