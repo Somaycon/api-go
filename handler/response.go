@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/Somaycon/api-go/schemas"
 	"github.com/gin-gonic/gin"
 )
 
@@ -21,4 +22,14 @@ func SendSucess(ctx *gin.Context, op string, data interface{}) {
 		"message": fmt.Sprintf("operation %s sucessfull", op),
 		"data":    data,
 	})
+}
+
+type ErrorResponse struct {
+	Message   string `json:"message"`
+	ErrorCode string `json:"errorCode"`
+}
+
+type CreateTaskResponse struct {
+	Message string               `json:"message"`
+	Data    schemas.TaskResponse `json:"data"`
 }
