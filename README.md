@@ -37,4 +37,4 @@ This repository contains a simple API built with Go for educational purposes, de
    
 ## Documentation
 
-- After running the project, in your browser search for [(http://localhost:8080/swagger/index.html)](http://localhost:8080/swagger/index.html) or click [here](http://localhost:8080/swagger/index.html)
+- After running the project, in your browser search for [(http://localhost:8080/swagger/index.html)](http://localhost:8080/swagger/index.html) or click [here](http://localhost:8080/swagger/index.html)   
